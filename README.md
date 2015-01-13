@@ -3,9 +3,9 @@ Docker container for WHD-CLI
 
 To use this container:  
 
-1. Create the com.mgithub.nmcspadden.whd-cli.plist file containing authentication for WebHelpDesk:  
+1. Create the com.github.nmcspadden.whd-cli.plist file containing authentication for WebHelpDesk:  
 	
-		`<?xml version="1.0" encoding="UTF-8"?>
+		<?xml version="1.0" encoding="UTF-8"?>
 		<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 		<plist version="1.0">
 		<dict>
@@ -14,7 +14,7 @@ To use this container:
 		        <key>whd_url</key>
 		        <string>https://webhelpdesk.domain.org:8443</string>
 		</dict>
-		</plist>`
+		</plist>
 You'll need to generate the [API key](http://www.solarwinds.com/documentation/webhelpdesk/docs/whd_api_12.1.0/web%20help%20desk%20api.html#auth-tech-api-key) for authentication.
 2.	This file can either be mounted using -v or configured during build.  A default plist has already been added to the container, so the Dockerfile can easily be forked.
 3.	Run the container:  
