@@ -2,7 +2,8 @@ FROM debian:latest
 
 MAINTAINER nmcspadden@gmail.com
 
-RUN yum install -y tar python-setuptools && yum clean all
+RUN apt-get update && apt-get install -y python-setuptools && apt-get clean
+RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 ADD https://github.com/kennethreitz/requests/tarball/master /home/requests/master.tar.gz
 RUN tar -zxvf /home/requests/master.tar.gz --strip-components=1 -C /home/requests && rm -f /home/requests/master.tar.gz
 WORKDIR /home/requests
