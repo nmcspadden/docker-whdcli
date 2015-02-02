@@ -18,10 +18,9 @@ To use this container:
 You'll need to generate the [API key](http://www.solarwinds.com/documentation/webhelpdesk/docs/whd_api_12.1.0/web%20help%20desk%20api.html#auth-tech-api-key) for authentication.
 2.	This file can either be mounted using -v or configured during build.  A default plist has already been added to the container, so the Dockerfile can easily be forked.
 3.	Run the container:  
-	`docker run -it --name whdcli -v com.github.nmcspadden.whd-cli.plist:/whdcli/com.github.nmcspadden.whd-cli.plist nmcspadden/whdcli /bin/bash`
+	`docker run -it --name whdcli -v com.github.nmcspadden.whd-cli.plist:/whdcli/com.github.nmcspadden.whd-cli.plist nmcspadden/whdcli /usr/bin/python`
 4.	Inside the container, run Python to use it:  
 
-		python
 		>>> import whdcli
 		>>> whd_prefs = whdcli.WHDPrefs("/whdcli/com.github.nmcspadden.whd-cli.plist")
 		>>> w = whdcli.WHD(whd_prefs, None, None, False)
