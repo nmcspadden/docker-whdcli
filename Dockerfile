@@ -1,13 +1,13 @@
-FROM ubuntu:latest
+FROM debian:latest
 
 MAINTAINER nmcspadden@gmail.com
 
-RUN apt-get install -y git
-RUN apt-get install -y python-setuptools
-RUN git clone git://github.com/kennethreitz/requests.git /home/requests
+RUN yum install -y tar python-setuptools && yum clean all
+ADD https://github.com/kennethreitz/requests/tarball/master /home/requests/master.tar.gz
+RUN tar -zxvf /home/requests/master.tar.gz --strip-components=1 -C /home/requests && rm -f /home/requests/master.tar.gz
 WORKDIR /home/requests
 RUN python /home/requests/setup.py install
-RUN git clone https://github.com/nmcspadden/WHD-CLI.git /home/whdcli
+ADD https://github.com/nmcspadden/WHD-CLI/tarball/master /home/whdcli/master.tar.gz
+RUN tar -zxvf /home/whdcli/master.tar.gz --strip-components=1 -C /home/whdcli && rm /home/whdcli/master.tar.gz
 WORKDIR /home/whdcli
 RUN python /home/whdcli/setup.py install
-ADD com.github.nmcspadden.whd-cli.plist /whdcli/com.github.nmcspadden.whd-cli.plist
